@@ -16,6 +16,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
+#include <sys/wait.h>
 #include <stdio.h> // Delete
 #include <string.h> // Delete
 #include "libs/ft_printf/ft_printf.h"

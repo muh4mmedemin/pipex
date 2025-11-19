@@ -14,8 +14,8 @@
 
 int main(int argc, char *argv[], char **envp)
 {
-    check_arg_count(argc);
-    t_token_list *list;
-    list = fill_list(argv, envp);
-    execve("/bin/ls", list->next->token, envp);
+    char c[1];
+    read(0, c,  1);
+
+    write(1, &c, 1);
 }
