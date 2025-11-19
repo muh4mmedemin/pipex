@@ -14,8 +14,30 @@
 
 int main(int argc, char *argv[], char **envp)
 {
-    char c[1];
-    read(0, c,  1);
+    pid_t pid;
+    int pipefd[2];
+    t_token_list *list;
 
-    write(1, &c, 1);
+    check_arg_count(argc);
+    list = fill_list(argv, envp);
+    pipe(pipefd);
+    pid = fork();
+    if (pid == 0)
+    {
+        close(pipefd[0]);
+        dup2(pipefd[1], 1);
+        close(pipefd[1]);
+        execve(ft_strjoin("/bin/", list->next->token[0]), list->next->token, envp);
+        return 1;
+    }
+    pid = fork();
+    if(pid == 0)
+    {
+        close(pipefd[1]);
+        dup2(pipefd[0], 0);
+        close(pipefd[0]);
+        execve(ft_strjoin("/bin/", list->next->next->token[0]), list->next->next->token, envp);
+        return 1;
+    }
+    wait(NULL);
 }
