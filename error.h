@@ -1,14 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   executer.c                                         :+:      :+:    :+:   */
+/*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: muayna <muayna@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/19 16:05:01 by muayna            #+#    #+#             */
-/*   Updated: 2025/11/19 16:05:01 by muayna           ###   ########.fr       */
+/*   Created: 2025/11/19 16:38:54 by muayna            #+#    #+#             */
+/*   Updated: 2025/11/19 16:38:54 by muayna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../pipex.h"
+#ifndef ERROR_H
+#define ERROR_H
 
+#include "pipex.h"
+void check_arg_count(int argc);
+
+#endif
