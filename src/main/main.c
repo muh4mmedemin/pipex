@@ -16,8 +16,13 @@ int main(int argc, char *argv[], char **envp)
 {
     pid_t pid;
     int pipefd[2];
+    int fd;
+    int fd2;
     t_token_list *list;
 
+    fd = open(argv[1], O_RDWR, 0777); // input
+    fd2 = open(argv[4], O_RDWR | O_CREAT, 0777); // out
+    printf("%d\n", fd2);
     check_arg_count(argc);
     list = fill_list(argv, envp);
     pipe(pipefd);
@@ -25,6 +30,8 @@ int main(int argc, char *argv[], char **envp)
     if (pid == 0)
     {
         close(pipefd[0]);
+        dup2(fd, 0);
+        close(fd);   
         dup2(pipefd[1], 1);
         close(pipefd[1]);
         execve(ft_strjoin("/bin/", list->next->token[0]), list->next->token, envp);
@@ -34,6 +41,8 @@ int main(int argc, char *argv[], char **envp)
     if(pid == 0)
     {
         close(pipefd[1]);
+        dup2(fd2, 1);
+        close(fd2);
         dup2(pipefd[0], 0);
         close(pipefd[0]);
         execve(ft_strjoin("/bin/", list->next->next->token[0]), list->next->next->token, envp);
