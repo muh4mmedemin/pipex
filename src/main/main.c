@@ -12,13 +12,6 @@
 
 #include "../../pipex.h"
 
-<<<<<<< HEAD
-void execute_heredoc(t_token_list **list, char **envp)
-{
-    char *str;
-    int fd;
-    (*list) = (*list)->next;
-=======
 void execute_heredoc(t_token_list **list, char **envp, char *here_doc_limiter)
 {
     int fd;
@@ -27,7 +20,6 @@ void execute_heredoc(t_token_list **list, char **envp, char *here_doc_limiter)
     fd = open("test.txt", O_RDONLY, 0777);
     str = get_next_line(fd);
     printf("%d\n", strcmp(str, here_doc_limiter));
->>>>>>> c5235be (fixed ft_strcmp)
 
 }
 
