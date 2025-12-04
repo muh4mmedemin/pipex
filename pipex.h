@@ -25,6 +25,8 @@
 #include "libs/get_next_line/get_next_line.h"
 #include "error.h"
 
+#define TEMP_FILE_NAME ".secret"
+
 typedef enum s_type
 {
     TOKEN_WORD,
@@ -44,5 +46,6 @@ typedef struct s_token_list
 
 t_token_list *fill_list(char **argv, char **envp);
 void create_path(t_token_list **list, char **envp);
+char  *cut_wrong_chracter(const char *s1);
 
 #endif

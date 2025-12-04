@@ -6,11 +6,11 @@
 /*   By: muayna <muayna@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 12:43:53 by muayna            #+#    #+#             */
-/*   Updated: 2025/08/08 14:31:27 by muayna           ###   ########.fr       */
+/*   Updated: 2025/12/04 23:23:18 by muayna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_utils.h"
 
 size_t	ft_strlen(char *s)
 {
@@ -79,7 +79,7 @@ char	*ft_strdup(const char *s)
 	srcsize = 0;
 	while (s[srcsize] != '\n' && s[srcsize] != '\0')
 		srcsize++;
-	newstr = malloc(srcsize + 1);
+	newstr = ft_malloc(srcsize + 1, 0);
 	if (newstr == NULL)
 		return (NULL);
 	srcsize = 0;

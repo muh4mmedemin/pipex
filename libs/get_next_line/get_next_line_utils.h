@@ -13,6 +13,10 @@
 #ifndef GET_NEXT_LINE_UTILS_H
 # define GET_NEXT_LINE_UTILS_H
 
+# include "../garbage_collector/gb.h"
+# include <stdlib.h>
+# include <unistd.h>
+
 size_t	ft_strlen(char *s);
 char	*ft_strchr(char *s, int c);
 char	*ft_strjoin(char const *s1, char const *s2);

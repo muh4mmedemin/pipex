@@ -6,14 +6,14 @@
 /*   By: muayna <muayna@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/06 12:43:47 by muayna            #+#    #+#             */
-/*   Updated: 2025/12/04 17:37:59 by muayna           ###   ########.fr       */
+/*   Updated: 2025/12/04 23:12:55 by muayna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "get_next_line_utils.h"
 #include "get_next_line.h"
-# include "get_next_line_utils.h"
 
-void	save_after_n(char *line, char *temp)
+static void	save_after_n(char *line, char *temp)
 {
 	int		i;
 	char	*new_line;
@@ -29,7 +29,7 @@ void	save_after_n(char *line, char *temp)
 	temp[i] = '\0';
 }
 
-char	*create_line(char *line)
+static char	*create_line(char *line)
 {
 	char	*new_line;
 	int		line_size;
@@ -51,7 +51,7 @@ char	*create_line(char *line)
 	return (new_line);
 }
 
-char	*read_file(int fd, char *temp)
+static char	*read_file(int fd, char *temp)
 {
 	char	buf[BUFFER_SIZE + 1];
 	char	*line;

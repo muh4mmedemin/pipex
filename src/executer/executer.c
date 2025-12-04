@@ -42,7 +42,10 @@ static void command_to_outfile(t_token_list ***list, int checker, int *pipefd, i
 {
     int fd;
 
-    fd  = open((**list)->token[0], O_RDWR | O_CREAT | O_TRUNC, 0777);
+    if((**list)->token_type == 2)
+        fd  = open((**list)->token[0], O_RDWR | O_CREAT | O_TRUNC, 0777);
+    else if((**list)->token_type == 5)
+        fd  = open((**list)->token[0], O_RDWR | O_CREAT | O_APPEND, 0777);
     pid_t pid;
     char *c[4];
 
@@ -119,7 +122,7 @@ void create_path(t_token_list **list, char **envp)
     checker = 0;
     pipe(pipefd);
     pipe(pipefd2);
-    while((*list)->token_type != 2)
+    while((*list)->token_type != 2 && (*list)->token_type != 5)
     {
         if ((*list)->token_type == 1)
             input_pipe_command(&list, envp, pipefd);
@@ -133,7 +136,7 @@ void create_path(t_token_list **list, char **envp)
             checker = 0;
             run_command(&list, envp, pipefd2, pipefd);
         }
-        if((*list)->token_type == 2)
+        if((*list)->token_type == 2 || (*list)->token_type == 5)
             command_to_outfile(&list, checker, pipefd, pipefd2);
     }
 }

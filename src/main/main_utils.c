@@ -1,34 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   main_utils.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: muayna <muayna@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/02 16:25:12 by muayna            #+#    #+#             */
-/*   Updated: 2025/12/02 16:25:12 by muayna           ###   ########.fr       */
+/*   Created: 2025/12/04 21:48:56 by muayna            #+#    #+#             */
+/*   Updated: 2025/12/04 21:48:56 by muayna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
-#include <stdio.h>
+#include "../../pipex.h"
 
-int ft_strcmp(const char *s1, const char *s2)
+char  *cut_wrong_chracter(const char *s1)
 {
     int i;
+    int size;
+    char *new_str;
 
     i = 0;
-    if(s1 == NULL && s2 == NULL)
-        return 0;
-    if(s1 == NULL || s2 == NULL)
-        return -1;
-    while(s1[i] && s2[i] && (s1[i] == s2[i]))
+    if (s1 == NULL || !ft_strchr(s1, '\n'))
+        return (char *)s1;
+    while (s1[i] && (s1[i] != '\n' && s1[i] != '\r'))
+        i++;
+    new_str = ft_malloc(i + 1, 0);
+    i = 0;
+    while(s1[i] && (s1[i]!= '\n' && s1[i] != '\r'))
     {
+        new_str[i] = s1[i];
         i++;
     }
-    if(s1[i] == '\0' && s2[i] == '\0')
-    {
-        return s1[i] - s2[i];
-    }
-    return s1[i] - s2[i];
+    new_str[i] = '\0';
+    return new_str;
 }

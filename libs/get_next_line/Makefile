@@ -10,8 +10,8 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libftprintf.a
-SRCS = ft_printf.c ft_printfutils.c
+NAME = gnl.a
+SRCS = get_next_line.c get_next_line_utils.c
 
 OBJS = $(SRCS:.c=.o)
 

@@ -6,11 +6,12 @@
 /*   By: muayna <muayna@student.42istanbul.com.t    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/31 12:36:21 by muayna            #+#    #+#             */
-/*   Updated: 2025/06/16 19:53:23 by muayna           ###   ########.fr       */
+/*   Updated: 2025/12/04 23:24:52 by muayna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include "../garbage_collector/gb.h"
 
 char	*ft_strdup(const char *s)
 {
@@ -20,7 +21,7 @@ char	*ft_strdup(const char *s)
 	srcsize = 0;
 	while (s[srcsize])
 		srcsize++;
-	newstr = malloc(srcsize + 1);
+	newstr = ft_malloc(srcsize + 1, 0);
 	if (newstr == NULL)
 		return (NULL);
 	srcsize = 0;

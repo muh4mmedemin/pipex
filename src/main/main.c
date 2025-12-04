@@ -12,15 +12,32 @@
 
 #include "../../pipex.h"
 
-void execute_heredoc(t_token_list **list, char **envp, char *here_doc_limiter)
+static void execute_heredoc(t_token_list **list, char *here_doc_limiter)
 {
     int fd;
     char *str;
-// value coming with \n or \r\n in console, cut it, after thart compare ft_strcmp
-    fd = open("test.txt", O_RDONLY, 0777);
-    str = get_next_line(fd);
-    printf("%d\n", strcmp(str, here_doc_limiter));
+    char *exit_character;
 
+    exit_character = NULL;
+    fd = open(TEMP_FILE_NAME, O_RDWR | O_CREAT | O_TRUNC, 0777);
+    while(1)
+    {
+        str = get_next_line(0);
+        exit_character = cut_wrong_chracter(str);
+        if(ft_strcmp(here_doc_limiter, exit_character))
+            write(fd, str, ft_strlen(str));
+        else
+        {
+            free(str);
+            break ;
+        }
+        free(str);
+    }
+    (*list) = (*list)->next;
+    (*list)->token_type = TOKEN_INPUT_FILE_NAME;
+    (*list)->token = ft_split(TEMP_FILE_NAME, ' ');
+    close(fd);
+    return ;
 }
 
 int main(int argc, char *argv[], char **envp)
@@ -32,11 +49,9 @@ int main(int argc, char *argv[], char **envp)
 
     //check_arg_count(argc);
     list = fill_list(argv, envp);
-    execute_heredoc(&list, envp, list->next->token[0]);
-    /*if(list->token_type == 3)
-        execute_heredoc(&list, envp);
-    else
-        create_path(&list, envp);
-
-    ft_malloc(1, 1);*/
+    if(list->token_type == 3)
+        execute_heredoc(&list, list->next->token[0]);
+    create_path(&list, envp);
+    unlink(TEMP_FILE_NAME);
+    ft_malloc(1, 1);
 }
