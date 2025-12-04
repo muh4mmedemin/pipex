@@ -15,11 +15,7 @@ NAME = pipex
 CC = cc
 #CFLAGS = -Wall -Wextra -Werror
 
-<<<<<<< HEAD
-SRCS = src/executer/executer.c src/parser/parser.c src/main/main.c src/parser/error.c
-=======
 SRCS = src/executer/executer.c src/parser/parser.c src/main/main.c src/parser/error.c libs/get_next_line/get_next_line.c libs/get_next_line/get_next_line_utils.c
->>>>>>> c5235be (fixed ft_strcmp)
 
 DIRFOLDER = libs/ft_printf
 DIRFOLDER2 = libs/libft

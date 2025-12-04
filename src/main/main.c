@@ -32,10 +32,7 @@ int main(int argc, char *argv[], char **envp)
 
     //check_arg_count(argc);
     list = fill_list(argv, envp);
-<<<<<<< HEAD
-=======
     execute_heredoc(&list, envp, list->next->token[0]);
->>>>>>> c5235be (fixed ft_strcmp)
     /*if(list->token_type == 3)
         execute_heredoc(&list, envp);
     else

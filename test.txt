@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-2
-=======
 wwaa
->>>>>>> c5235be (fixed ft_strcmp)

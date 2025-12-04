@@ -22,10 +22,7 @@
 #include "libs/ft_printf/ft_printf.h"
 #include "libs/libft/libft.h"
 #include "libs/garbage_collector/gb.h"
-<<<<<<< HEAD
-=======
 #include "libs/get_next_line/get_next_line.h"
->>>>>>> c5235be (fixed ft_strcmp)
 #include "error.h"
 
 typedef enum s_type
@@ -47,9 +44,5 @@ typedef struct s_token_list
 
 t_token_list *fill_list(char **argv, char **envp);
 void create_path(t_token_list **list, char **envp);
-<<<<<<< HEAD
-void execute_heredoc(t_token_list **list, char **envp);
-=======
->>>>>>> c5235be (fixed ft_strcmp)
 
 #endif
